@@ -28,9 +28,9 @@ var builder = WebApplication.CreateBuilder(args);
         .AllowAnyMethod()
         .AllowAnyOrigin();
     }));
-    builder.Services.AddDbContext<BookContext>(opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-    builder.Services.AddScoped<IReservationService, ReservationService>();
-    builder.Services.AddScoped<IReservationRepository, ReservationRepository>();
+    builder.Services.AddDbContextFactory<BookContext>(opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+    builder.Services.AddScoped<IBookService, BookService>();
+    builder.Services.AddScoped<IBookRepository, BookRepository>();
 
 
     var app = builder.Build();

@@ -8,17 +8,17 @@ using Microsoft.EntityFrameworkCore.Design;
 
 namespace Data;
 
-internal class BookContextFactory : IDesignTimeDbContextFactory<BookContext>
+internal class BookContextFactory
 {
 
 
-    public BookContext CreateDbContext(string[] args)
-    {
-        var optionsBuilder = new DbContextOptionsBuilder<BookContext>();
-        optionsBuilder.UseSqlServer(@"Data Source=(LocalDb)\MSSqlLocalDB; Initial Catalog=BookDb;");
+    //public BookContext CreateDbContext(string[] args)
+    //{
+    //    var optionsBuilder = new DbContextOptionsBuilder<BookContext>();
+    //    optionsBuilder.UseSqlServer(@"Data Source=(LocalDb)\MSSqlLocalDB; Initial Catalog=BookDb;");
 
-        return new BookContext(optionsBuilder.Options);
-    }
+    //    return new BookContext(optionsBuilder.Options);
+    //}
 
 }
 

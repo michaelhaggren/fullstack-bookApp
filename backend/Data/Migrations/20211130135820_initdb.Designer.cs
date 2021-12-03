@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Migrations
 {
     [DbContext(typeof(BookContext))]
-    [Migration("20211112191138_changetable")]
-    partial class changetable
+    [Migration("20211130135820_initdb")]
+    partial class initdb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -24,7 +24,7 @@ namespace Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("Data.Entities.Reservation", b =>
+            modelBuilder.Entity("Data.Entities.Book", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -34,28 +34,44 @@ namespace Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("DateReserved")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("Price")
+                    b.Property<int>("Rating")
                         .HasColumnType("int");
 
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime>("YearReleased")
+                        .HasColumnType("datetime2");
+
                     b.HasKey("Id");
 
-                    b.ToTable("Reservations");
+                    b.ToTable("Books");
 
                     b.HasData(
                         new
                         {
-                            Id = new Guid("92a64c1d-12f5-444b-9026-821ff5d634ff"),
+                            Id = new Guid("9fa56fa8-dd1d-45ac-8121-4f6f46df4e22"),
                             Author = "J.Guillou",
-                            DateReserved = new DateTime(2021, 11, 12, 19, 11, 38, 247, DateTimeKind.Utc).AddTicks(2711),
-                            Price = 17,
-                            Title = "Ondskan"
+                            Rating = 5,
+                            Title = "Ondskan",
+                            YearReleased = new DateTime(2007, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = new Guid("9e24a494-76e2-4e4c-a0eb-5d2a1816c71f"),
+                            Author = "V. Moberg",
+                            Rating = 5,
+                            Title = "Utvandrarna",
+                            YearReleased = new DateTime(1949, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = new Guid("aa0baa0e-13be-43f4-95a3-286e7e84ccce"),
+                            Author = "D. Owens",
+                            Rating = 5,
+                            Title = "Där kräftorna sjunger ",
+                            YearReleased = new DateTime(2020, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
                 });
 #pragma warning restore 612, 618

@@ -9,18 +9,32 @@ public class BookContext : DbContext
 
     }
 
-    public DbSet<Reservation> Reservations { get; set; }
+    public DbSet<Book> Books { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
 
-        modelBuilder.Entity<Reservation>().HasData(new Reservation
+        modelBuilder.Entity<Book>().HasData(new Book
         {
             Id = Guid.NewGuid(),
             Author = "J.Guillou",
             Title = "Ondskan",
-            Price = 17,
-            DateReserved = DateTime.UtcNow,
+            Rating = 5,
+            YearReleased = new DateTime(2007, 05, 01),
+        }, new Book()
+        {
+            Id = Guid.NewGuid(),
+            Author = "V. Moberg",
+            Title = "Utvandrarna",
+            Rating = 5,
+            YearReleased = new DateTime(1949, 05, 01),
+        }, new Book()
+        {
+            Id = Guid.NewGuid(),
+            Author = "D. Owens",
+            Title = "Där kräftorna sjunger ",
+            Rating = 5,
+            YearReleased = new DateTime(2020, 01, 01),
         });
     }
 

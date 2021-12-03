@@ -1,0 +1,31 @@
+.editButton {
+  background-color: #2f86a6;
+  width: 30px;
+  height: 25px;
+  cursor: pointer;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  border: none;
+}
+.editButton svg {
+  font-size: 16px;
+}
+
+.deleteButton {
+  background-color: #fc4f30;
+  width: 30px;
+  height: 25px;
+  cursor: pointer;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  border: none;
+}
+.deleteButton svg {
+  font-size: 16px;
+}/*# sourceMappingURL=BookItem.module.css.map */

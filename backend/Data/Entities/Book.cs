@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Data.Entities;
 
-public class Reservation
+public class Book
 {
     public Guid Id { get; set; }
     public string Title { get; set; } = string.Empty;
     public string Author { get; set; } = string.Empty;
-    public int Price { get; set; }
-    public DateTime DateReserved { get; set; }
+    public int Rating { get; set; }
+    public DateTime YearReleased { get; set; }
 
 }
