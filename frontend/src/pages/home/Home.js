@@ -5,9 +5,9 @@ const Home = () => {
   return (
     <div className="container">
       <div className="grid grid-cols-1 md:grid-cols-2">
-        <div className="flex justify-end items-center mr-4">
-          <h1 className="font-bold text-3xl ">the digital bookshelf </h1>
-          <img className="w-6 h-6" src={imgBook} alt="book-pic" />
+        <div className="flex justify-end items-center mr-8">
+          <h1 className="font-bold text-3xl mr-2">the digital bookshelf </h1>
+          <img className="w-10 h-10" src={imgBook} alt="book-pic" />
         </div>
 
         <div className="flex justify-start items-start">

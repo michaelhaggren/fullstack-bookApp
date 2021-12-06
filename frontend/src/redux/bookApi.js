@@ -1,8 +1,12 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { toast } from 'react-toastify';
+
+const baseURL = process.env.REACT_APP_API_URL;
 
 export const bookApi = createApi({
   reducerPath: 'bookApi',
-  baseQuery: fetchBaseQuery({ baseUrl: 'https://localhost:5001/api/' }),
+
+  baseQuery: fetchBaseQuery({ baseUrl: baseURL }),
   tagTypes: ['Books'],
   endpoints: (builder) => ({
     getAll: builder.query({
@@ -31,6 +35,7 @@ export const bookApi = createApi({
     }),
     addBook: builder.mutation({
       query: (body) => {
+        toast.success('book added');
         return {
           url: `book`,
           method: 'POST',

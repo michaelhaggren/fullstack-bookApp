@@ -1,9 +1,7 @@
 import { useState } from 'react';
-import { TableCell } from '@mui/material';
 import dayjs from 'dayjs';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-import { TableBody, Button } from '@mui/material';
 import EditBookModal from '../EditBookModal/EditBookModal';
 import { bookApi } from '../../redux/bookApi';
 const BookItem = (props) => {
@@ -21,31 +19,43 @@ const BookItem = (props) => {
   };
   return (
     <>
-      <TableBody key={book.id}>
-        <TableCell align="left">{book.author}</TableCell>
-        <TableCell align="left"> {book.title}</TableCell>
-        <TableCell align="left"> {book.rating}</TableCell>
+      <tbody className="bg-white" key={book.id}>
+        <tr className="text-gray-700 text-sm">
+          <td className="px-4 py-3 border">{book.author}</td>
+          <td className="px-4 py-3 border"> {book.title}</td>
+          <td className="px-4 py-3 border"> {book.rating}</td>
 
-        <TableCell align="left">
-          {dayjs(book.yearReleased).format('YYYY/MM/DD')}
-        </TableCell>
-        <TableCell align="left">
-          <Button onClick={() => onEdit()} color="primary">
-            <EditIcon />
-          </Button>
-          <EditBookModal
-            visible={visible}
-            setVisible={setVisible}
-            selectedBook={book}
-            setSelected={setSelectedBook}
-          />
-        </TableCell>
-        <TableCell>
-          <Button color="warning" onClick={() => onDelete(book)}>
-            <DeleteForeverIcon />
-          </Button>
-        </TableCell>
-      </TableBody>
+          <td className="px-4 py-3 border">
+            {dayjs(book.yearReleased).format('YYYY/MM/DD')}
+          </td>
+          <td className="border">
+            <button onClick={() => onEdit()} className="bg-transparent ">
+              <span
+                className=" 
+              text-blue-600 py-2 px-2 ml-1"
+              >
+                <EditIcon style={{ fontSize: '2em' }} />
+              </span>
+            </button>
+            <EditBookModal
+              visible={visible}
+              setVisible={setVisible}
+              selectedBook={book}
+              setSelected={setSelectedBook}
+            />
+          </td>
+          <td className="border">
+            <button
+              className="bg-transparent text-red-500"
+              onClick={() => onDelete(book)}
+            >
+              <span className="py-2 px-2 ml-1">
+                <DeleteForeverIcon style={{ fontSize: '1.8em' }} />
+              </span>
+            </button>
+          </td>
+        </tr>
+      </tbody>
     </>
   );
 };

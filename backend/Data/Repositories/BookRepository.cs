@@ -54,12 +54,8 @@ namespace Data.Repositories
         public IQueryable<Book> GetBooks()
         {
             var context = _dbContextFactory.CreateDbContext();
-            
-                return context.Books.AsQueryable();
 
-            
-
-
+            return context.Books.AsQueryable();
         }
 
 
