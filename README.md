@@ -1,4 +1,4 @@
-# Fullstack REST Api Application
+# Full Stack REST API
 
 ### Tech stack
 
