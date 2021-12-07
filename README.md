@@ -1,15 +1,3 @@
-### Getting started
-
-Make sure you have SQL Server (LocalDB) installed on your computer
-######
-Use ur preferable IDE
-######
-Cd into backend => data => "dotnet ef database update"
-######
-Cd into backend => book.api => "dotnet run"
-######
-Cd into frontend => "npm start"
-
 ###
 Fullstack REST Api
 
@@ -28,6 +16,18 @@ reactstrap
 ASP.NET
 MSSQL
 Entity Framework Core
+
+### Getting started
+
+Make sure you have SQL Server (LocalDB) installed on your computer
+######
+Use ur preferable IDE
+######
+Cd into backend => data => "dotnet ef database update"
+######
+Cd into backend => book.api => "dotnet run"
+######
+Cd into frontend => "npm start"
 
 ## Design system
 Figma
