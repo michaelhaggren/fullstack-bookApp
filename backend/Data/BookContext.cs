@@ -20,21 +20,42 @@ public class BookContext : DbContext
             Author = "J.Guillou",
             Title = "Ondskan",
             Rating = 5,
-            YearReleased = new DateTime(2007, 05, 01),
+            YearReleased = new DateTime(2007, 01, 01),
         }, new Book()
         {
             Id = Guid.NewGuid(),
             Author = "V. Moberg",
             Title = "Utvandrarna",
             Rating = 5,
-            YearReleased = new DateTime(1949, 05, 01),
+            YearReleased = new DateTime(1949, 01, 01),
         }, new Book()
         {
             Id = Guid.NewGuid(),
-            Author = "D. Owens",
-            Title = "Där kräftorna sjunger ",
+            Author = "Daniel Defoe",
+            Title = "Robinson Crusoe",
+            Rating = 4,
+            YearReleased = new DateTime(1719, 01, 01),
+        }, new Book()
+        {
+            Id = Guid.NewGuid(),
+            Author = "Marcel Proust",
+            Title = " In Search of Lost Time",
+            Rating = 4,
+            YearReleased = new DateTime(1913, 01, 01),
+        }, new Book()
+        {
+            Id = Guid.NewGuid(),
+            Author = "Miguel de Cervantes",
+            Title = "Don Quixote",
             Rating = 5,
-            YearReleased = new DateTime(2020, 01, 01),
+            YearReleased = new DateTime(1605, 01, 01),
+        }, new Book()
+        {
+            Id = Guid.NewGuid(),
+            Author = "Herman Melville",
+            Title = "Moby Dick",
+            Rating = 5,
+            YearReleased = new DateTime(1851, 01, 01),
         });
     }
 

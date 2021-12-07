@@ -54,7 +54,7 @@ const initialState = {
   status: STATUS.idle,
   books: [],
 };
-//! Testa RTK QUERY från redux docsen
+// TODO Radera om du går över helt till RTK query
 const bookSlice = createSlice({
   name: 'books',
   initialState,

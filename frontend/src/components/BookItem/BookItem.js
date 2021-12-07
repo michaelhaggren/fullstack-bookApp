@@ -3,7 +3,7 @@ import dayjs from 'dayjs';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import EditBookModal from '../EditBookModal/EditBookModal';
-import { bookApi } from '../../redux/bookApi';
+import { bookApi } from '../../services/bookApi';
 const BookItem = (props) => {
   const { book } = props;
   const [deleteBook] = bookApi.useDeleteBookMutation();
@@ -26,16 +26,12 @@ const BookItem = (props) => {
           <td className="px-4 py-3 border"> {book.rating}</td>
 
           <td className="px-4 py-3 border">
-            {dayjs(book.yearReleased).format('YYYY/MM/DD')}
+            {dayjs(book.yearReleased).format('YYYY')}
           </td>
-          <td className="border">
+
+          <td className="px-1 text-center py-1 border">
             <button onClick={() => onEdit()} className="bg-transparent ">
-              <span
-                className=" 
-              text-blue-600 py-2 px-2 ml-1"
-              >
-                <EditIcon style={{ fontSize: '2em' }} />
-              </span>
+              <EditIcon style={{ fontSize: '1.8em' }} />
             </button>
             <EditBookModal
               visible={visible}
@@ -44,14 +40,12 @@ const BookItem = (props) => {
               setSelected={setSelectedBook}
             />
           </td>
-          <td className="border">
+          <td className="px-1 text-center  py-1 border">
             <button
               className="bg-transparent text-red-500"
               onClick={() => onDelete(book)}
             >
-              <span className="py-2 px-2 ml-1">
-                <DeleteForeverIcon style={{ fontSize: '1.8em' }} />
-              </span>
+              <DeleteForeverIcon style={{ fontSize: '1.8em' }} />
             </button>
           </td>
         </tr>

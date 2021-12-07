@@ -1,14 +1,26 @@
 import BookList from '../../components/BooksList/BookList';
-import BookForm from '../../components/BookForm/BookForm';
+import { useState } from 'react';
+import AddBookModal from '../../components/AddBookModal/AddBookModal';
+import AddIcon from '@mui/icons-material/Add';
 const Favorite = () => {
+  const [visible, setVisible] = useState(false);
+  // TODO Responsiv design
   return (
-    <div className="h-screen w-full grid  lg:grid-cols-2 grid-cols-1 place-items-center">
-      <div className="md:w-8/12 md:h-5/6 self-center">
-        <h2 className="mb-6 text-lg font-semibold">new book</h2>
-        <BookForm />
-      </div>
-      <div className="md:w-full md:h-5/6 font-semibold">
-        <BookList />
+    <div className="h-screen grid grid-cols-1 py-7 px-7 mt-6 place-items-center items-baseline">
+      <div className="w-10/12 col-span-2">
+        <div className="flex flex-column">
+          <button
+            className="text-white rounded-lg ml-3 w-44 p-2 bg-green-500"
+            onClick={() => setVisible(true)}
+          >
+            New book
+            <AddIcon />
+          </button>
+
+          <AddBookModal visible={visible} setVisible={setVisible} />
+          {/* <div className="md:w-full md:h-5/6 font-semibold"> */}
+          <BookList />
+        </div>
       </div>
     </div>
   );

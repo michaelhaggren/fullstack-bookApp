@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import 'react-calendar/dist/Calendar.css';
-import { bookApi } from '../../redux/bookApi';
-import { Form, FormGroup, Label, Input } from 'reactstrap';
+import { bookApi } from '../../services/bookApi';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
 
 function ReservationForm() {
   const [book, setBook] = useState({
@@ -12,6 +12,7 @@ function ReservationForm() {
   });
   const [addBook] = bookApi.useAddBookMutation();
 
+  //TODO Ta bort om du ska använda formik
   const handleSubmit = async (e) => {
     e.preventDefault();
     await addBook(book);
@@ -19,55 +20,71 @@ function ReservationForm() {
   const handleChange = (event) => {
     setBook({ ...book, [event.target.name]: event.target.value });
   };
+  const renderError = (message) => <p className="text-red-600">{message}</p>;
+  const validationSchema = Yup.object().shape({
+    author: Yup.string().required('a ghost wrote this book?'),
+    title: Yup.string().required('does the book not have a title?'),
+    rating: Yup.number().min(0).max(5).required('it wasnt that bad was it?'),
+    yearReleased: Yup.date()
+      .default(() => new Date())
+      .required('a book has no name'),
+  });
+
+  const onSubmit = (values) => {
+    addBook(values);
+  };
+  const initialValues = {
+    author: '',
+    title: '',
+    rating: '',
+    yearReleased: new Date(),
+  };
 
   return (
     <>
-      <div className="App">
-        <div className="w-3/4">
-          <Form onSubmit={handleSubmit}>
-            <FormGroup>
-              <Label> Author *</Label>
-              <Input
+      <div className="w-3/4">
+        <Formik
+          initialValues={initialValues}
+          validationSchema={validationSchema}
+          onSubmit={async (values, { resetForm }) => {
+            await onSubmit(values);
+            resetForm();
+          }}
+        >
+          <Form>
+            <label> Author *</label>
+            <div className="control">
+              <Field
                 name="author"
                 type="text"
-                required
-                onChange={handleChange}
-                placeholder="enter the author..."
+                id="author"
+                placeholder="Author.."
               />
-            </FormGroup>
-            <FormGroup>
-              <Label> Title *</Label>
-              <Input
+              <ErrorMessage name="author" render={renderError} />
+            </div>
+            <div>
+              <label> Title *</label>
+              <Field
                 name="title"
-                value={book.title}
-                required
+                id="title"
                 type="text"
-                onChange={handleChange}
                 placeholder="enter the title..."
               />
-            </FormGroup>
-            <FormGroup>
-              <Label> Rating *</Label>
-              <Input
+            </div>
+            <div>
+              <label> Rating *</label>
+              <Field
                 name="rating"
-                required
-                value={book.rating}
+                id="rating"
                 type="number"
-                onChange={handleChange}
                 placeholder="enter the rating..."
               />
-            </FormGroup>
+            </div>
 
-            <FormGroup>
-              <Label> Year released *</Label>
-              <Input
-                name="yearReleased"
-                value={book.yearReleased}
-                type="date"
-                required
-                onChange={handleChange}
-              />
-            </FormGroup>
+            <div>
+              <label> Year released *</label>
+              <Field name="yearReleased" type="date" id="rating" />
+            </div>
 
             <div className="w-4/5 flex justify-center">
               <button
@@ -79,7 +96,7 @@ function ReservationForm() {
               <loading />
             </div>
           </Form>
-        </div>
+        </Formik>
       </div>
     </>
   );

@@ -1,0 +1,11 @@
+.closeBtn {
+  height: 40px;
+  width: 100px;
+  background: rgb(24, 24, 24);
+  color: #fff;
+  border-radius: 5px;
+  &:hover {
+    color: #fff;
+    background: rgb(39, 38, 38);
+  }
+}

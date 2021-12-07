@@ -1,8 +1,8 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { toast } from 'react-toastify';
 
-const baseURL = process.env.REACT_APP_API_URL;
-
+const baseURL = 'https://localhost:5001/api/';
+// TODO se över url requestsen
 export const bookApi = createApi({
   reducerPath: 'bookApi',
 

@@ -1,16 +1,16 @@
 import BookItem from '../BookItem/BookItem';
-import { bookApi } from '../../redux/bookApi';
+import { bookApi } from '../../services/bookApi';
 
 const BookList = () => {
   const { data: books, isError, isLoading } = bookApi.useGetAllQuery();
   console.log(books);
   return (
     <>
-      <section className="md:container container p-2 mr-4">
+      <section className="md:container container p-2 ">
         <div className="w-5/6 mb-8 overflow-hidden rounded-lg shadow-md">
-          <h2 className="text-lg ml-2 mb-2 md:text-left  md:text-lg">
+          {/* <h2 className="text-lg ml-2 mb-2 md:text-left  md:text-lg">
             favorite(s)
-          </h2>
+          </h2> */}
           <div className="w-full overflow-x-auto">
             <table className="w-full bg-gray-800 text-white">
               <thead>

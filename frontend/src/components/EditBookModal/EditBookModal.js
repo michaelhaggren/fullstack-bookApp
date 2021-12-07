@@ -1,11 +1,10 @@
 import { useState, useEffect, useCallback } from 'react';
-import { Modal, ModalBody, ModalHeader } from 'reactstrap';
-
-import { bookApi } from '../../redux/bookApi';
+import { Modal, ModalBody, ModalHeader, ModalFooter } from 'reactstrap';
+import s from './EditBookModal.module.scss';
+import { bookApi } from '../../services/bookApi';
 
 import dayjs from 'dayjs';
 import {
-  Button,
   Form,
   FormGroup,
   Label,
@@ -15,8 +14,8 @@ import {
 export default function EditBookModal({
   selectedBook,
   visible,
-  setSelected,
   setVisible,
+  setSelected,
 }) {
   const [book, setBook] = useState({
     author: selectedBook.author,
@@ -35,7 +34,9 @@ export default function EditBookModal({
   const handleChange = (event) => {
     setBook({ ...selectedBook, [event.target.name]: event.target.value });
   };
-
+  const handleCloseModal = () => {
+    setVisible(false);
+  };
   // console.log(selected);
 
   // const handleSubmit = async () => {
@@ -51,8 +52,9 @@ export default function EditBookModal({
   // };
   return (
     <>
-      <Modal isOpen={visible} toggle={() => setVisible(false)}>
-        <ModalHeader>Edit book</ModalHeader>
+      <Modal size="lg" isOpen={visible} toggle={() => setVisible(false)}>
+        <ModalHeader>Edit book </ModalHeader>
+
         <ModalBody>
           <Form onSubmit={handleSubmit}>
             <FormGroup>
@@ -91,12 +93,21 @@ export default function EditBookModal({
                 onChange={handleChange}
               />
             </FormGroup>
-
-            <Button variant="primary" type="submit">
-              Save
-            </Button>
+            <div className="w-4/5 flex justify-center">
+              <button
+                type="submit"
+                className="bg-green-400 rounded-lg w-2/6 h-12 md:ml-10 ml-0 text-white hover:bg-green-600 "
+              >
+                Save
+              </button>
+            </div>
           </Form>
         </ModalBody>
+        <ModalFooter>
+          <button onClick={() => handleCloseModal()} className={s.closeBtn}>
+            Close
+          </button>
+        </ModalFooter>
       </Modal>
     </>
   );
