@@ -1,8 +1,8 @@
 # Full Stack REST API
 
-### Tech stack
+## Tech stack
 
-## Frontend
+### Frontend
 React.js
 Redux
 Tailwind
@@ -11,7 +11,7 @@ Formik
 Yup
 reactstrap
 
-## Backend
+### Backend
 ASP.NET
 MSSQL
 Entity Framework Core
