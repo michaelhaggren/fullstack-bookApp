@@ -17,18 +17,6 @@ ASP.NET
 MSSQL
 Entity Framework Core
 
-### Getting started
-
-Make sure you have SQL Server (LocalDB) installed on your computer
-######
-Use ur preferable IDE
-######
-Cd into backend => data => "dotnet ef database update"
-######
-Cd into backend => book.api => "dotnet run"
-######
-Cd into frontend => "npm start"
-
 ## Design system
 Figma
 ![image](https://user-images.githubusercontent.com/70579640/145084733-2c969b93-bf80-4c80-b87f-9644243b9395.png)
