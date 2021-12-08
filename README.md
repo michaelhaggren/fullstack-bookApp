@@ -16,7 +16,7 @@ ASP.NET
 MSSQL
 Entity Framework Core
 
-## Design system
+### Design system
 Figma
 ![image](https://user-images.githubusercontent.com/70579640/145084733-2c969b93-bf80-4c80-b87f-9644243b9395.png)
 
