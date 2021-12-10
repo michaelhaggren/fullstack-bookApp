@@ -10,7 +10,7 @@ namespace Core.Interfaces
     public interface IBookService
     {
         Task<BookModel> GetBookAsync(Guid id);
-        Task<List<BookModel>> GetBooksAsync();
+        Task<IEnumerable<BookModel>> GetBooksAsync();
         Task<BookModel> AddBookAsync(BookModel book);
         Task<BookModel> PutBookAsync(BookModel book);
         Task DeleteBookAsync(Guid id);

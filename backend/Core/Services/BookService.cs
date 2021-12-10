@@ -65,17 +65,28 @@ namespace Core.Services
             };
         }
 
-        public async Task<List<BookModel>> GetBooksAsync()
+        public async Task<IEnumerable<BookModel>> GetBooksAsync()
         {
-            IQueryable<Book> query = _bookRepository.GetBooks();
-            return await query.Select(book => new BookModel
+            //IQueryable<Book> query = _bookRepository.GetBooks();
+            //return await query.Select(book => new BookModel
+            //{
+            //    Id = book.Id,
+            //    Title = book.Title,
+            //    Author = book.Author,§
+            //    Rating = book.Rating,
+            //    YearReleased = book.YearReleased,
+            //}).ToListAsync();
+            var books = await _bookRepository.GetBooks();
+            var booksAsync = books.Select(book => new BookModel()
             {
                 Id = book.Id,
                 Title = book.Title,
                 Author = book.Author,
                 Rating = book.Rating,
                 YearReleased = book.YearReleased,
-            }).ToListAsync();
+            }).ToList();
+            return booksAsync;
+
         }
 
         public async Task<BookModel> PutBookAsync(BookModel book)

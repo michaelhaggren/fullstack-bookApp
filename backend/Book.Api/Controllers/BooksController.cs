@@ -6,11 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 namespace Book.Api.Controllers;
 [ApiController]
 [Route("api/[controller]")]
-public class BookController : ControllerBase
+public class BooksController : ControllerBase
 {
     private readonly IBookService _bookService;
 
-    public BookController(IBookService bookService)
+    public BooksController(IBookService bookService)
     {
         _bookService = bookService;
     }
@@ -92,7 +92,7 @@ public class BookController : ControllerBase
             Rating = updateBookModel.Rating,
             YearReleased = updateBookModel.YearReleased,
         };
-        var updatedBook = await _bookService.PutBookAsync(bookModel);
+        await _bookService.PutBookAsync(bookModel);
         return NoContent();
     }
 }

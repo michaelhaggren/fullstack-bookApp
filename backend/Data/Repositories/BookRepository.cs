@@ -51,11 +51,15 @@ namespace Data.Repositories
                 return await context.Books.FindAsync(id);
         }
 
-        public IQueryable<Book> GetBooks()
+        public async Task<IEnumerable<Book>> GetBooks()
         {
-            var context = _dbContextFactory.CreateDbContext();
+            using (var context = _dbContextFactory.CreateDbContext())
 
-            return context.Books.AsQueryable();
+            {
+                return await context.Books.ToListAsync();
+
+            }
+
         }
 
 

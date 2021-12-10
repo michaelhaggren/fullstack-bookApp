@@ -10,13 +10,13 @@ export const bookApi = createApi({
   tagTypes: ['Books'],
   endpoints: (builder) => ({
     getAll: builder.query({
-      query: () => `book`,
+      query: () => `books`,
       providesTags: [{ type: 'Books', id: 'LIST' }],
     }),
     updateBook: builder.mutation({
       query: (book) => {
         return {
-          url: `book/${book.id}`,
+          url: `books/${book.id}`,
           method: 'PUT',
           body: book,
         };
@@ -26,7 +26,7 @@ export const bookApi = createApi({
     deleteBook: builder.mutation({
       query: (book) => {
         return {
-          url: `book/${book.id}`,
+          url: `books/${book.id}`,
           method: 'DELETE',
           body: book,
         };
@@ -37,7 +37,7 @@ export const bookApi = createApi({
       query: (body) => {
         toast.success('book added');
         return {
-          url: `book`,
+          url: `books`,
           method: 'POST',
           body: body,
         };

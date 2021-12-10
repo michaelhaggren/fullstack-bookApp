@@ -13,7 +13,7 @@ namespace Data.Interfaces
         Task DeleteAsync(Guid id);
         Task<Book> PutAsync(Book book);
         Task<Book> AddAsync(Book book);
-        IQueryable<Book> GetBooks();
+        Task<IEnumerable<Book>> GetBooks();
 
 
 
