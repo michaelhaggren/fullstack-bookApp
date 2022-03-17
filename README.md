@@ -22,6 +22,6 @@ Figma
 
 ![image](https://user-images.githubusercontent.com/70579640/145090741-1a67bfc2-c65c-4b19-be49-19a60fe15145.png)
 
-Separate modals for editng/adding a book
+Separate modals for editing/adding a book
  ![image](https://user-images.githubusercontent.com/70579640/145084907-1ce1ba86-466b-4dbf-bf88-147830b11cc0.png)
 
